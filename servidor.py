@@ -164,7 +164,12 @@ if __name__ == '__main__':
     print("\n" + "="*50)
     print("🌿 Servidor de Clasificación de Biomas")
     print("="*50)
-    print("\n📡 API corriendo en: http://localhost:5000")
+    
+    # Usar puerto de Railway o 5000 por defecto
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('RAILWAY_ENVIRONMENT') is None
+    
+    print(f"\n📡 API corriendo en: http://localhost:{port}")
     print("📄 Abrir index.html en el navegador\n")
     
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=debug)
